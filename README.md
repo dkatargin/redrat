@@ -1,4 +1,4 @@
-RadRat - cli-интерфейс к Redmine
+RedRat - cli-интерфейс к Redmine
 =======
 [![Python version](https://img.shields.io/badge/python-3.4-green.svg)](https://www.python.org/downloads/release/python-343/)
 [![Python-redmine](https://img.shields.io/badge/python--redmine-1.5.0-red.svg)](https://pypi.python.org/pypi/python-redmine/)
