@@ -1,4 +1,4 @@
-from connector import redmine
+from common.connector import redmine
 
 
 class ViewIssues:
