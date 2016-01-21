@@ -1,7 +1,6 @@
 import argparse
 import configparser
-import editor
-import viewer
+from func import viewer, editor
 
 
 
