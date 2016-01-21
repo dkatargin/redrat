@@ -45,4 +45,12 @@ class EditIssues:
             print('Пользователь задачи не изменён')
 
     def add_comment(self):
-        pass
+        selected_issue = self.redmine.issue.get(self.issue_id)
+        for j in selected_issue.journals:
+            print("@%s: %s" % (j.user, j.notes))
+        new_comment = str(input('Введите комментарий>> '))
+        upd_status = self.redmine.issue.update(self.issue_id, notes=new_comment)
+        if upd_status:
+            print('Комментарий добавлен')
+        else:
+            print('Комментарий не добавлен')

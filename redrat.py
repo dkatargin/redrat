@@ -3,7 +3,6 @@ import configparser
 from func import viewer, editor
 
 
-
 def parse_args():
     parser = argparse.ArgumentParser(description='RedRat: CLI для работы с RedMine')
     subparsers = parser.add_subparsers()
