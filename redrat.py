@@ -1,5 +1,8 @@
+#!/usr/bin/python3
+
 import argparse
 import configparser
+import os
 from func import viewer, editor
 
 
@@ -18,7 +21,7 @@ def parse_args():
 
 
 def viewer_settings(args):
-    config_path = 'settings.conf'
+    config_path = os.path.join(os.path.dirname(__file__), 'settings.conf')
     config = configparser.ConfigParser()
     config.read(config_path)
     issue_minimal_priority = int(config.get('ReaderSettings', 'MinimalPriority'))
@@ -34,8 +37,10 @@ def editor_settings(args):
 
 def main_start():
     args = parse_args()
-    args.func(args)
-
+    try:
+        args.func(args)
+    except Exception as e:
+        print(e)
 
 if __name__ == '__main__':
     main_start()
