@@ -11,6 +11,7 @@ def parse_args():
     subparsers = parser.add_subparsers()
     parser_view = subparsers.add_parser('view', help='Просмотр задач')
     parser_view.add_argument('view_type', help='list - просмотр в виде списка; num - просмотр количества задач')
+    parser_view.add_argument('milestone', help='фильтрация по версиям(all-показать все)')
     parser_view.set_defaults(func=viewer_settings)
 
     parser_edit = subparsers.add_parser('edit', help='Изменение задач')
@@ -28,8 +29,10 @@ def viewer_settings(args):
     issue_exclude_projects = tuple(x.strip() for x in config.get('ReaderSettings', 'ExcludeProjects').split(','))
     viewer.ViewIssues(args.view_type, assigned_to='me',
                       minimal_priority=issue_minimal_priority,
-                      exclude_projects=issue_exclude_projects)
+                      exclude_projects=issue_exclude_projects, milestone=args.milestone)
 
+def hide_users():
+    print(viewer.ViewIssues('users').users)
 
 def editor_settings(args):
     editor.EditIssues(edit_type=args.edit_type, issue_id=args.issue_id)
@@ -44,3 +47,4 @@ def main_start():
 
 if __name__ == '__main__':
     main_start()
+    #hide_users()
